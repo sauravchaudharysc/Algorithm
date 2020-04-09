@@ -50,5 +50,9 @@ Let
    It is a modification of Rabin Karp's Algorithm.<br>
    String :- ABAABCXABCXABXA<br>
    Pattern :- ABCXABX<br>
- 
+    In case of Rabin Karp we start comparsion from the index 0 of string and 0 of pattern.If there is 
+a match we increase i and j. If at any point of time if there is mismatch we initialise j=0 and 
+i=i+1. And we perform the same step again. But this turns out to be a expensive approach in terms
+of Time Complexity.
+
     
