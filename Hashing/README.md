@@ -23,4 +23,7 @@ This is the purpose of HashTable.
     2.  Hash Table
     3.  Collision Handling Scheme
     
+   ![](hashing.png) 
+    
+    
      
