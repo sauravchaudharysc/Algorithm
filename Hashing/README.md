@@ -30,5 +30,28 @@ fig, there is a function which take input as string and give output as INT 7.
 So we store the Burger with value 120 at index 7 of table.
 Since Hash table size if fixed.So we must keep in consideration the Key values
 lies withing the range.So for this we take out key value mod with table size.
+If two function have same key value then there occurs a collision.
+
+## Hash Function
+   
+Collision cannot be avoided but it chances can be minimized by using 
+a good hash function.<br>
     
+    1.Simple Hash function
+        h(key)=key%TableSize
+    It is suggested to use prime number for Table Size.Because Multiples are 
+    less compared to others. Suppose if Table size is 10. Then MOD 10,20,30
+    all result to zero.
+         
+    2.String Hash Function
+      Add up ASCII values of characters of string to produce integer keys.But 
+      problem will arise in case of anagrams.Because they both have the same 
+      ASCII value.Small string maynt fill the table size.
+                                                         So to overcome this
+      we can use a apporach in which we will sum str[i]*pow(prime,i) upto
+      the length-1.And then we will take mod with table size.To make it Fit for
+      the table.
+    
+    
+         
      
