@@ -24,6 +24,11 @@ This is the purpose of HashTable.
     3.  Collision Handling Scheme
     
    ![](hashing.png) 
-    
+   <br>
+ Suppose you want to add burger and the value 120 in the hash table.As shown in
+fig, there is a function which take input as string and give output as INT 7.
+So we store the Burger with value 120 at index 7 of table.
+Since Hash table size if fixed.So we must keep in consideration the Key values
+lies withing the range.So for this we take out key value mod with table size.
     
      
