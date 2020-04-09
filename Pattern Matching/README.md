@@ -45,3 +45,10 @@ Let
       we found a pattern.
     In worst case if every sub-string has the same hash value as of pattern.
     Then this will also take same complexity as brute force. O(n*m).
+    
+  ## KMP Algorithm [O(n+m)]
+   It is a modification of Rabin Karp's Algorithm.<br>
+   String :- ABAABCXABCXABXA<br>
+   Pattern :- ABCXABX<br>
+ 
+    
