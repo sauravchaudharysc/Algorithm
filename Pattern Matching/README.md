@@ -70,44 +70,45 @@ To avoid recomputatuon we create a reset table.
 At every index we will store what is length of longest suffix present till now viz also present 
 as a prefix in the pattern.
 
-Steps:- 
-   1.KMPpreprocess
-   Here we create the reset table using the pattern.Take two pointer i,j.Initialise i=0 & j=-1.Iterate
-   till the length of the pattern.This table will store what is length of longest suffix present till now which is
-   also present as a prefix in the pattern.
-     PseudoCode
-         KMPpreprocess(patttern)	
-       i=0,j=-1,reset[0]=-1;
-       while(i<patternlength){
-         while(j>=0 and pattern[i]!=pattern[j]){
-            j=reset[j];
-         }
-       }
-       i++;
-       j++;
-       reset[i]=j;
-       }
-   2.KMPsearch or Matching
-    Here the main task occurs.We recieve here both the pattern and the string.We call the KMPprocess function and 
-   compute the reset table.With the help of reset table we perform our task.Here we simply iterate over the string
-   till there is no mismatch and print the index of i-j to get the pattern index.But if there occurs a mismatch we
-   use the reset table and check if there is any prefix for the suffix and begin the jth index from that position 
-   to avoid recomputation.
-     PseudoCode
-        KMPsearch(str,pat)
-       KMPpreprocess(pat);
-         i=0,j=0;
-              while(i<str.size()){
-               while(j >= 0 && str[i]!=pat[j]){
-                     j=reset[j];
-               }
-               i++;
-            j++;
-               if(j==pat.size()){
-                cout<<"Pattern is found at"<<i-j<<endl;
-                j=reset[j];
-                    }
-         }
+   Steps:- 
+   
+      1.KMPpreprocess
+      Here we create the reset table using the pattern.Take two pointer i,j.Initialise i=0 & j=-1.Iterate
+      till the length of the pattern.This table will store what is length of longest suffix present till now which is
+      also present as a prefix in the pattern.
+        PseudoCode
+            KMPpreprocess(patttern)	
+          i=0,j=-1,reset[0]=-1;
+          while(i<patternlength){
+            while(j>=0 and pattern[i]!=pattern[j]){
+               j=reset[j];
+            }
+          }
+          i++;
+          j++;
+          reset[i]=j;
+          }
+      2.KMPsearch or Matching
+       Here the main task occurs.We recieve here both the pattern and the string.We call the KMPprocess function and 
+      compute the reset table.With the help of reset table we perform our task.Here we simply iterate over the string
+      till there is no mismatch and print the index of i-j to get the pattern index.But if there occurs a mismatch we
+      use the reset table and check if there is any prefix for the suffix and begin the jth index from that position 
+      to avoid recomputation.
+        PseudoCode
+           KMPsearch(str,pat)
+          KMPpreprocess(pat);
+            i=0,j=0;
+                 while(i<str.size()){
+                  while(j >= 0 && str[i]!=pat[j]){
+                        j=reset[j];
+                  }
+                  i++;
+               j++;
+                  if(j==pat.size()){
+                   cout<<"Pattern is found at"<<i-j<<endl;
+                   j=reset[j];
+                       }
+            }
 
 
 
