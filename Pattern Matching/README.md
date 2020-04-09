@@ -54,5 +54,15 @@ Let
 a match we increase i and j. If at any point of time if there is mismatch we initialise j=0 and 
 i=i+1. And we perform the same step again. But this turns out to be a expensive approach in terms
 of Time Complexity.
+ Suppose at any point of time i reaches 3. Here, <br>
+ &nbsp;&nbsp;&nbsp;&nbsp;str[3]=pat[0],str[4]=pat[1],str[5]=pat[2],str[6]=pat[3]
+&nbsp;&nbsp;&nbsp;&nbsp;str[7]=pat[4],str[8]=pat[5],str[9]!=pat[6]
+&nbsp;&nbsp;&nbsp;&nbsp; So the next iteration will start from 4. 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So Complexity = O(n.m)
+                    
+So KMP Algorithm will make sure that we arent recomputing any of the iteration we have done before.
+For this we will create the reset table.In reset table at every index what is the length of longest
+suffix present till now which is also present as prefix in the pattern.<br>
+![](KMP.png)</br>
 
     
