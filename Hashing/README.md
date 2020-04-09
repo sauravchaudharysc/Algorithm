@@ -56,7 +56,7 @@ a good hash function.<br>
   ### Open Hashing (Seperate Chaining)
         Implemented Using Linked List<br>
          hash function= NO%10 <br>
-            ![](hashing.png)<br>
+            ![](linkedlist.png)<br>
     To insert a element with particular key. We create a node at that particular
     position and insert the element.The key position contain the address of node.
     So in chaining for multiple node with same hash value we create a linked List.
