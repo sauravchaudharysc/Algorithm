@@ -16,11 +16,11 @@ This is the purpose of HashTable.
        some kind of an order of the elements.
 
 ## Hash Function
-    * Hash["string key"] ==> Integer Value</li>
+    *  Hash["string key"] ==> Integer Value</li>
 
 ## Key Components
-    * Hash Function</li>
-    * Hash Table</li>
-    * Collision Handling Scheme
+    *  Hash Function</li>
+    *  Hash Table</li>
+    *  Collision Handling Scheme
     
      
