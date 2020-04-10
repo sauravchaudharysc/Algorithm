@@ -75,7 +75,8 @@ of collision. One way is to increase the table size as element increases.
 
 <br>
 So we can define a load factor.<br>
-### Load Factor = ratio of(CS/TS)
+
+#### Load Factor = ratio of(CS/TS)
 If Load Factor becomes greater than threshold(0.75) then this is the time to increase the bucket
 size.So we are going to find the next prime number which is near to double of size of old 
 hash table. All the previous element in the old table must be rehashed.
