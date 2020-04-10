@@ -10,11 +10,13 @@ A map maintains a self-balancing BST to do the work. All the objects are ordered
 See mapsbasic.cpp<br>
 ### Header File #include<map>
 <br>
-## Unordered Map O(1) except in case of rehashing
+ 
+ ## Unordered Map O(1) except in case of rehashing
 This is actually implementation of HashTable.Visit the HashTable content for further information.
 In case of ordered map you observed the output are sorted but here you will observe it isnt .We use 
 this to perform insert and delete in 0(1) time.Here ordered is not done due to hash function.Because
 random index is provided.<br>
+
 ## How to create hash table for custom class ?<br>
 The key of a hash table is a custom object.Suppose you want to solve a problem where you want to make
 a hash map where the key is of type student and value is of type INT.For a custom class in key
