@@ -22,5 +22,5 @@ A trie can be reprsented as a node kind structure.
           
           char data; contains only single character
           bool isTerminal; to tell any word is ending at this node or not.
-          unordered_map<char,Node*>m; char will represent character and Node* will represent address           of child node
+          unordered_map<char,Node*>m; char will represent character and Node* will represent address of child node
           
