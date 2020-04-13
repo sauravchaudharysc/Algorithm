@@ -6,7 +6,7 @@ To check the performance of algorithms.We use space time complexity analysis.In 
 Time and Space both are function of N(Input Size).
 <br>
 Analysis can be done in two approach :- <br>
-1.Practical
-2.Theoretical
-
+1.Practical<br>
+2.Theoretical<br>
+<br>
 The first approach in infeasible because we cant always run each code and check it.
