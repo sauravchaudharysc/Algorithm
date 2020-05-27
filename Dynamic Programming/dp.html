@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Dynamic Programming</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    h1,
+    h2,
+    h3,
+    h4 {
+      letter-spacing: 0.25rem;
+      text-transform: capitalize;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    h4 {
+      font-size: 0.875rem;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Catamaran", sans-serif;
+      background: #fff;
+      color: black;
+      line-height: 1.5;
+      font-size: 0.875rem;
+      margin: 0;
+    }
+
+    /* Style the header */
+    .header {
+      padding: 40px;
+      text-align: center;
+      background: #1abc9c;
+      color: white;
+    }
+
+    /* Increase the font size of the h1 element */
+    .header h1 {
+      font-size: 40px;
+    }
+
+    /* Style the top navigation bar */
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    /* Style the navigation bar links */
+    .navbar a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 24px 30px;
+      text-decoration: none;
+    }
+
+    /* Right-aligned link */
+    .navbar a.right {
+      float: right;
+    }
+
+    /* Change color on hover */
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    /* Column container */
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      width: 85vw;
+      margin: 0 auto;
+      max-width: 1170px;
+    }
+
+
+    /* Main column */
+    .main {
+      flex: 70%;
+      background-color: white;
+      padding: 20px;
+      max-width:100%;
+    }
+
+    .responsive {
+      max-width: 50%;
+      height: auto;
+      margin :0 25%;
+    }
+
+    .dp-content{
+      max-width:80%;
+      position: relative;
+      margin:0px 10%;
+    }
+
+    /* Fake image, just for this example */
+    .fakeimg {
+      background-color: #aaa;
+      width: 80%;
+      padding: 20px;
+    }
+
+    /*footer*/
+
+
+    /*Table */
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 80%;
+      border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2
+    }
+
+    body {
+      font-family: "Catamaran", sans-serif;
+      line-height: 1.5;
+      font-size: 0.875rem;
+    }
+
+    a {
+      color: blue;
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    /*Horizontal Bar*/
+    hr.new5 {
+      border: 3px solid green;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>Dynamic Programming</h1>
+  </div>
+
+  <div class="navbar">
+    <a href="#" class="left">Practice Question</a>
+    <a href="../../index.html" class="right">Home</a>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <h2>Introduction</h2>
+      <h5>Gogeto, May 20, 2020</h5>
+      <div><img src="img/intro.png" alt="Nature" class="responsive" width="600" height="400"></div>
+      <p>Dynamic programming is basically an optimization algorithm. It means that we can solve any problem without using dynamic programming but we can solve it in a better way or optimize it using dynamic programming.<br />
+        The basic idea of dynamic programming is to store the result of a problem after solving it. So when we get the need to use the solution of the problem, then we don't have to solve the problem again and just use the stored solution.
+      </p>
+      <b>Dynamic Programming Follows Principle of Optimality</b><br />
+      <p>
+        <h4>Where to use Dynamic Programming?</h5>
+          <ol>
+
+            <li>
+              Optimal Substructure
+            </li>
+            A problem is said to have optimal substructure if an optimal solution can be constructed efficiently from optimal solution of its subproblems. Simply stated as expressing a bigger problem into smaller sub-problems.
+
+            <li>Overlapping Sub-Problems</li>
+            Same sub-problems occur again and again. So instead of computing for those values again and again we can store them and use it when needed.
+
+            Two different ways to store the value: -
+            <ul>
+              <li>
+                Tabulation (Bottom-Up)
+              </li>
+              <li>
+                Memoization (Top-Down)
+              </li>
+            </ul>
+          </ol>
+      </p>
+      <a href="study/intro.pdf">See More</a>
+      <hr class="new5">
+      <br>
+      <h2>MULTISTAGE GRAPH</h2>
+      <p>
+        A directional and weighted graph and vertices are divided into stages and edges are connecting vertices from one stage to another only.
+      </p>
+      <div><img src="img/multi.jpg" alt="Nature" class="responsive" width="600" height="400"></div>
+      <p>Here,there are various path from source to sink.We need to select the one with minimum cost.<br />We use tabulation method to do this.</p>
+
+      <div style="overflow-x:auto;">
+        <table>
+          <tr>
+            <th>V</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+          </tr>
+          <tr>
+            <td>Cost</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><b>d</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        For each vertex we need to find cost and d.Cost of any vertex is sum of cost of edges going to sink.
+        Here d is the vertex through which we get the minimum cost.
+        Cost(stage,vertex no),gives cost
+      </p>
+      <br />
+      <p>
+        We start to calculate the distance from the end vertex i.e 5th stage.<br />
+        <ol type="I">
+          <li>
+            5th stage
+          </li>
+
+     <p  class="dp-content">cost(5,12)=0</p>
+          <li>
+            4th stage
+          </li>
+            <p  class="dp-content">
+              cost(4,9)= 4,given by vertex 12
+cost(4,10)= 2,given by vertex 12
+cost(4,11)= 5, given by vertex 12
+            </p>
+          <li>
+            3rd Stage
+          </li>
+
+            <p  class="dp-content">
+              Cost(3,6)= min{c(6,9)+cost(4,9),c(6,10)+cost(4,10)}
+         = min {6+4,5+2}
+Cost(3,6)= 7,given by vertex 10
+Cost(3,8)= min {c8,10)+cost(4,10),c(8,11)+cost(4,11)}
+         = min{5+2,6+5}
+         = 7,given by vertex 10
+            </p>
+          <li>
+            2nd Stage
+          </li>
+
+            <p  class="dp-content">
+              Cost (2,3) = min{c(2,6)+cost(3,6),c(2,7)+cost(3,7),c(2,8)+cost(3,8)}
+              = min{4+7,2+5,1+7}
+              = 7,given by vertex 7
+   Cost(2,3)  = min{c(3,6)+cost(3,6),c(3,7)+cost(3,7)}
+              = min{2+7,7+5}
+              = 9,given by 6
+   Cost(2,4)  = 18,which is given by vertex 8
+   Cost(2,5)  = min{c(5,7)+cost(3,7),c(5,8)+cost(3,8)}
+              = min{11+5,8+7}
+              = 15,which is given by 8
+            </p>
+
+          <li>
+            1st Stage
+          </li>
+
+            <p class="dp-content">
+              cost(1,1) = min{c(1,2)+cost(2,2),c(1,3)+cost(2,3),c(1,4)+cost(2,4),
+                c(1,5)+cost(2,5)}
+          = min{9+7,7+9,3+18,2+15}
+          = 16,which is given by vertex 2 or 3
+            </p>
+        </ol>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr>
+              <th>V</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+              <th>6</th>
+              <th>7</th>
+              <th>8</th>
+              <th>9</th>
+              <th>10</th>
+              <th>11</th>
+              <th>12</th>
+            </tr>
+            <tr>
+              <td>Cost</td>
+              <td>16</td>
+              <td>7</td>
+              <td>9</td>
+              <td>18</td>
+              <td>15</td>
+              <td>7</td>
+              <td>5</td>
+              <td>7</td>
+              <td>4</td>
+              <td>2</td>
+              <td>5</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td><b>d</b></td>
+              <td>2/3</td>
+              <td>7</td>
+              <td>6</td>
+              <td>8</td>
+              <td>8</td>
+              <td>10</td>
+              <td>10</td>
+              <td>10</td>
+              <td>12</td>
+              <td>12</td>
+              <td>12</td>
+              <td>12</td>
+            </tr>
+          </table>
+        </div>
+        You can click on See More for further explanation required.
+        <a href="study/multi.pdf">SEE More</a><br>
+      </p>
+      Check the Code :-
+      <a href="code/multistage/multistageGraph.c" download>
+        C Code
+      </a>&emsp;
+      <a href="code/multistage/multistageGraph.cpp" download>
+        CPP Code
+      </a>
+      <hr class="new5">
+      <h2>All Pair Shortest Path</h2>
+      <p>The Floyd Warshall Algorithm is for solving the All Pairs Shortest Path problem. As a result of this algorithm, it will generate a matrix, which will represent the minimum distance from any node to all other nodes in the graph.</p>
+      <p>
+        We initialize the solution matrix same as the input graph matrix as a first step. Then we update the solution matrix by considering all vertices as an intermediate vertex. The idea is to one by one pick all vertices and updates all shortest
+        paths which include the picked vertex as an intermediate vertex in the shortest path. When we pick vertex number k as an intermediate vertex, we already have considered vertices {0, 1, 2, .. k-1} as intermediate vertices. For every pair (i,
+        j) of the source and destination vertices respectively, there are two possible cases.<br />
+        <p>
+          <ol>
+            <li>
+              k is not an intermediate vertex in shortest path from i to j.
+              We keep the same value of mat[i][j] as it is.
+            </li>
+            <li>
+              k is an intermediate vertex in shortest path from i to j.
+              We update the value of dist[i][j] as mat[i][k] + mat[k][j] if mat[i][j] > mat[i][k] + mat[k][j]
+            </li>
+          </ol>
+        </p>
+      </p>
+      <a href="study/allpair.pdf">See More</a>
+      </a><br>
+      Check the Code :-
+      <a href="code/allpair/main.c" download>
+        C Code
+      </a>&emsp;
+      <a href="code/allpair/main.cpp" download>
+        CPP Code
+      </a>
+
+      <hr class="new5">
+      <h2>Matrix Multiplication</h2>
+
+      <div class="w3-content w3-display-container">
+        <img class="mySlides" src="img/matrix1.png" style="width:100%">
+        <img class="mySlides" src="img/matrix2.png" style="width:100%">
+        <img class="mySlides" src="img/matrix3.png" style="width:100%">
+        <img class="mySlides" src="img/matrix4.png" style="width:100%">
+        <img class="mySlides" src="img/matrix5.png" style="width:100%">
+
+        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+      </div>
+
+      <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+          showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          if (n > x.length) {
+            slideIndex = 1
+          }
+          if (n < 1) {
+            slideIndex = x.length
+          }
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+          }
+          x[slideIndex - 1].style.display = "block";
+        }
+      </script>
+
+      <p><b>Matrix chain multiplication (or Matrix Chain Ordering Problem, MCOP) </b>is an optimization problem that can be solved using dynamic programming. Given a sequence of matrices, the goal is to find the most efficient way to multiply these
+        matrices. The problem is not actually to perform the multiplications, but merely to decide the sequence of the matrix multiplications involved.
+        <br />
+        There are many options because matrix multiplication is associative. In other words, no matter how the product is parenthesized, the result obtained will remain the same. For example, for four matrices A, B, C, and D, we would have:
+        <br />
+        &emsp;&emsp;&emsp;&emsp;((AB)C)D = (A(BC))D = (AB)(CD) = A((BC)D) = A(B(CD)).<br />
+        However, the order in which the product is parenthesized affects the number of simple arithmetic operations needed to compute the product, that is the computational complexity.
+        <br />For example, if A is a 10 × 30 matrix, B is a 30 × 5 matrix, and C is a 5 × 60 matrix, then
+        computing <br />&emsp;&emsp;&emsp;(AB)C needs (10×30×5) + (10×5×60) = 1500 + 3000 = 4500 operations, while
+        computing A(BC) needs (30×5×60) + (10×30×60) = 9000 + 18000 = 27000 operations.
+        Clearly the first method is more efficient.<br /> <br />With this information, the problem statement can be refined as "how to determine the optimal parenthesization of a product of n matrices?" Checking each possible parenthesization (brute
+        force) would require a run-time that is exponential in the number of matrices, which is very slow and impractical for large n. A quicker solution to this problem can be achieved by breaking up the problem into a set of related subproblems. By
+        solving subproblems once and reusing the solutions, the required run-time can be drastically reduced. This concept is known as dynamic programming.&nbsp;<a href="study/matrixmulti.pdf">See More</a></p>
+
+      Check the Code :-
+      <a href="code/matrix/main.c" download>
+        C Code
+      </a>&emsp;
+      <a href="code/matrix/main.cpp" download>
+        CPP Code
+      </a>
+      <hr class="new5">
+      <h2>Single Source Shortest Path</h2>
+      &emsp;<h3>Bellman Ford's Algorithm</h3>
+      <p>The Bellman–Ford algorithm is an algorithm that computes shortest paths from a single source vertex to all of the other vertices in a weighted digraph.</p>
+      <p>
+        It is slower than Dijkstra's algorithm for the same problem, but more versatile, as it is capable of handling graphs in which some of the edge weights are negative numbers.
+        <br />&nbsp;In this<ul>
+          <li>
+            Relax the edges n-1 time
+          </li>
+          <li>
+            If after relaxing n-1 time ,if we relaxe once more and if value changes then it has negative cycle.So Bellman Ford can’t be applied.
+          </li>
+        </ul>
+        <b>Relaxation of (u,v)</b>
+      <br/> If (d[u]+c(u,v) < d[v] ) then, d[v]=d[u]+c(u,v)
+    </p>
+      <a href="study/bellman.pdf">See More</a>
+      </a><br>
+      Check the Code :-
+      <a href="code/bellman/main.c" download>
+        C Code
+      </a>&emsp;
+      <a href="code/bellman/main.cpp" download>
+        CPP Code
+      </a>
+      <hr class="new5">
+      <h2>0-1 KnapSack Problem</h2>
+      <p>
+          <b> Given a bag of a certain capacity, W. Given some items with their weights and profit(values). How do you fill this bag so that you get the maximum profit ??
+              Note:- The item aren’t breakable you need to consider total weight.</br>
+              &emsp;&emsp;Let weight elements = {10,40,30,50} <br>
+&emsp;&emsp;Let weight values = {5, 4, 6,3} <br>
+&emsp;&emsp;KnapSack Capacity=10 <br />
+</b>
+
+<div><img src="img/knap.png" alt="Nature" class="responsive" width="600" height="400"></div>
+              In the Dynamic programming we will consider a 2-d array of weight elements * capacity.
+Fill the dp array in bottom wise manner. The first row belongs to zero item included so mark them zero . The first column belongs to zero weight included so mark them zero.
+      </p>
+      <a href="study/0-1 KnapSack.pdf">See More</a>
+      </a><br>
+      Check the Code :-
+      <a href="code/0-1 KnapSack/main.c" download>
+        C Code
+      </a>&emsp;
+      <a href="code/0-1 KnapSack/main.cpp" download>
+        CPP Code
+      </a>
+      <hr class="new5">
+      <h2>Optimal Binary Search Tree</h2>
+      <p>
+        <b>Given keys and frequency at which these keys are searched, how would you create binary search tree from these keys such that cost of searching is minimum.</b></br>
+        When we know the frequency of searching each one of the keys, it is quite easy to compute the expected cost of accessing each node in the tree. An optimal binary search tree is a BST, which has minimal expected cost of locating each node
+        <br /><strong>The optimal cost for freq[i..j] can be iteratively calculated using following formula.
+            <br />&emsp;&emsp;&emsp;COST=sum(row,col,freq)+((k>row)? cost[row][k-1]:0)+((k< col)? cost[k+1][col]:0);<br />
+           <br /> Make each node root one by one and compare each one of their cost. K is considered as root.
+            </strong>
+      </p>
+      <br>
+      Check the Code :-
+      <a href="code/Optimal Binary Search Tree/main.c" download>
+        C Code
+      </a>&emsp;
+      <a href="code/Optimal Binary Search Tree/main.cpp" download>
+        CPP Code
+      </a>
+      <hr class="new5">
+      <h2>Travelling Salesman Problem</h2>
+      <p>You have a travelling salesman and he have to travel set of cities.Salesman has to return to its
+original source from where he started. During his journey we have to minimize total distance travelled
+by him.</br>
+
+       &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;The distance is given by adjacency matrix.<br />
+      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;  dist[i][j] = Gives the distance between two cities
+                     if they are directly connected by an edge<br />
+        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;dist[i][j] = If they are not connected then they are reprsented
+                     as INT_MAX.<br />
+Note the difference between Hamiltonian Cycle and TSP.<br />
+We are talking about a hamiltonian cycle.Here we know that Hamiltonian Tour exists
+(because the graph is complete). It means covering all the vertices once through set of edges
+and we come back to the starting node. Output of a travelling salesman problem minimum weight hamiltonian
+cycle.
+<br />
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;We can do this by Dynamic Programming using Top-Down Approach.It is an optimization to recursion. We use
+memoization to avoid overlapping subproblems.
+
+And we can use bitmask to keep a record of cities visited so far.  </p>
+
+Check the Code :-
+<a href="code/Travelling Salesman Problem/main.c" download>
+  C Code 1
+</a>&emsp;
+<a href="code/Travelling Salesman Problem/maindp.c" download>
+  C Code 2
+</a>&emsp;
+<a href="code/Travelling Salesman Problem/main.cpp" download>
+  CPP Code
+</a>
+
+    </div>
+  </div>
+</body>
+
+</html>
